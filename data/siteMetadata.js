@@ -20,11 +20,9 @@ const siteMetadata = {
   linkedin: 'https://www.linkedin.com/in/Anirudh4583',
   locale: 'en-US',
   analytics: {
-    googleAnalyticsId: 'G-QE10C02KHS', // e.g. UA-000000-2 or G-XXXXXXX
+    googleAnalyticsId: 'G-QE10C02KHS',
   },
   newsletter: {
-    // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus
-    // Please add your .env file and modify it according to your selection
     provider: 'buttondown',
   },
   comment: {
