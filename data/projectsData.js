@@ -1,19 +1,12 @@
 const projectsData = [
   {
-    title: 'A Search Engine',
-    description: `What if you could look up any information in the world? Webpages, images, videos
-    and more. Google has many features to help you find exactly what you're looking
-    for.`,
+    title: 'COVID-19 Tracker',
+    description: `Web app that tracks and displays COVID-19
+    global cases and deaths. The application utilizes map, chart and graph to manifest the global and local Coronavirus trends in an easily acknowledgeable manner.`,
     imgSrc: '/static/images/google.png',
-    href: 'https://www.google.com',
-  },
-  {
-    title: 'The Time Machine',
-    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-    to the desired date and press "Go". No more worrying about lost keys or
-    forgotten headphones with this simple yet affordable solution.`,
-    imgSrc: '/static/images/time-machine.jpg',
-    href: '/blog/the-time-machine',
+    href: 'https://covid-tracker-an.web.app/',
+    github: 'https://github.com/Anirudh4583/covid-tracker',
+    tech: ['React', 'Material-UI', 'Chart.js', 'Leaflet', 'Firebase'],
   },
 ]
 
