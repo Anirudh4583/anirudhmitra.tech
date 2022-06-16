@@ -5,7 +5,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import formatDate from '@/lib/utils/formatDate'
 
-import NewsletterForm from '@/components/NewsletterForm'
+import NewsletterForm, { BlogNewsletterForm } from '@/components/NewsletterForm'
 
 const MAX_DISPLAY = 5
 
@@ -19,21 +19,36 @@ export default function Home({ posts }) {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
+
+      <div className="my-6 flex flex-col items-center gap-x-12 xl:mb-12 xl:flex-row">
+        <div className="pt-6">
+          <h1 className="pb-6 text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+            Hey, I'm Anirudh Mitra.
+          </h1>
+          <h2 className="prose text-lg text-gray-600 dark:text-gray-400">
+            Welcome to my blog! I'm a Final Year Undergraduate in Computer Science at IIIT-V and
+            Tech Lead at <Link href="https://www.shezh.com">Shezh</Link>. I enjoy finding funny and
+            interesting things and I love making stories out of them. You can check out some of my{' '}
+            <Link href="/projects">Projects</Link> and <Link href="/blog">Blog Posts</Link>.
+          </h2>
+        </div>
+      </div>
+
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Latest
-          </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+          <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
+            Latest &nbsp;Posts
+          </h2>
+          {/* <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             {siteMetadata.description}
-          </p>
+          </p> */}
         </div>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
             const { slug, date, title, summary, tags } = frontMatter
             return (
-              <li key={slug} className="py-12">
+              <li key={slug} className="py-10">
                 <article>
                   <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                     <dl>
@@ -63,6 +78,7 @@ export default function Home({ posts }) {
                           {summary}
                         </div>
                       </div>
+                      {/* 
                       <div className="text-base font-medium leading-6">
                         <Link
                           href={`/blog/${slug}`}
@@ -70,8 +86,9 @@ export default function Home({ posts }) {
                           aria-label={`Read "${title}"`}
                         >
                           Read more &rarr;
-                        </Link>
+                        </Link> 
                       </div>
+                        */}
                     </div>
                   </div>
                 </article>
