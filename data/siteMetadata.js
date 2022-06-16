@@ -7,7 +7,8 @@ const siteMetadata = {
   description: "Anirudh Mitra's personal website",
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://anirudhm.tech',
+  // TODO: update site url
+  siteUrl: 'https://anirudhm-tech.vercel.app/',
   siteRepo: 'https://github.com/anirudh4583/anirudhm.tech',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
