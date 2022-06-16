@@ -1,9 +1,9 @@
 const siteMetadata = {
   // TODO: Add site's name
-  title: 'AnirudhM[dot]Tech',
+  title: 'Anirudh Mitra',
   author: 'Anirudh Mitra',
   // TODO: Add site's name
-  headerTitle: 'AnirudhM[dot]Tech',
+  headerTitle: 'Anirudh Mitra',
   description: "Anirudh Mitra's personal website",
   language: 'en-us',
   theme: 'system', // system, dark or light
@@ -11,7 +11,7 @@ const siteMetadata = {
   siteRepo: 'https://github.com/anirudh4583/anirudhm.tech',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
-  socialBanner: '/static/images/twitter-card.png',
+  socialBanner: '/static/images/banner.png',
   email: 'anirudhmitra210@gmail.com',
   github: 'https://github.com/anirudh4583',
   twitter: 'https://twitter.com/BrownVitriol',

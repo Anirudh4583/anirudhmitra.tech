@@ -26,10 +26,10 @@ export default function Home({ posts }) {
             Hey, I'm Anirudh Mitra.
           </h1>
           <h2 className="prose text-lg text-gray-600 dark:text-gray-400">
-            Welcome to my blog! I'm a Final Year Undergraduate in Computer Science at IIIT-V and
-            Tech Lead at <Link href="https://www.shezh.com">Shezh</Link>. I enjoy finding funny and
-            interesting things and I love making stories out of them. You can check out some of my{' '}
-            <Link href="/projects">Projects</Link> and <Link href="/blog">Blog Posts</Link>.
+            Welcome to my blog! I am a Final Year Undergraduate (Computer Science) at IIIT-V and
+            Tech Lead at <Link href="https://www.shezh.com">Shezh</Link>. I enjoy finding
+            interesting things and love making stories out of them. You can check out some of my{' '}
+            <Link href="/projects">Projects</Link> and <Link href="/blog">Blog</Link> Posts.
           </h2>
         </div>
       </div>
