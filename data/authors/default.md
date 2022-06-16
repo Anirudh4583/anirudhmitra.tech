@@ -1,12 +1,12 @@
 ---
-name: Tails Azimuth
+name: Anirudh Mitra
 avatar: /static/images/avatar.png
-occupation: Professor of Atmospheric Science
-company: Stanford University
-email: address@yoursite.com
-twitter: https://twitter.com/Twitter
-linkedin: https://www.linkedin.com
-github: https://github.com
+occupation: B.Tech CSE
+company: IIIT Vadodara
+email: anirudhmitra210@gmail.com
+twitter: https://twitter.com/BrownVitriol
+linkedin: https://www.linkedin.com/in/anirudh4583
+github: https://github.com/Anirudh4583
 ---
 
 Tails Azimuth is a professor of atmospheric sciences at the Stanford AI Lab. His research interests includes complexity modelling of tailwinds, headwinds and crosswinds.
