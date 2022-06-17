@@ -24,7 +24,7 @@ const siteMetadata = {
     googleAnalyticsId: 'G-QE10C02KHS',
   },
   newsletter: {
-    provider: 'buttondown',
+    // provider: 'buttondown',
   },
   comment: {
     // If you want to use a commenting system other than giscus you have to add it to the
