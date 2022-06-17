@@ -8,7 +8,7 @@ const siteMetadata = {
   language: 'en-us',
   theme: 'system', // system, dark or light
   // TODO: update site url
-  siteUrl: 'https://anirudhm-tech.vercel.app/',
+  siteUrl: 'https://anirudhm-tech.vercel.app',
   siteRepo: 'https://github.com/anirudh4583/anirudhm.tech',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
@@ -17,7 +17,7 @@ const siteMetadata = {
   github: 'https://github.com/anirudh4583',
   twitter: 'https://twitter.com/BrownVitriol',
   facebook: 'https://facebook.com/anirudh4583',
-  youtube: 'https://www.youtube.com/channel/UCgDh5nqxD_1rc1Z42nJRo4w/',
+  youtube: 'https://www.youtube.com/channel/UCgDh5nqxD_1rc1Z42nJRo4w',
   linkedin: 'https://www.linkedin.com/in/Anirudh4583',
   locale: 'en-US',
   analytics: {
