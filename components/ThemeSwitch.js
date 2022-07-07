@@ -1,9 +1,18 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
+import useSound from 'use-sound'
 
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme, resolvedTheme } = useTheme()
+
+  const [play] = useSound('/static/switch.mp3', {
+    sprite: {
+      dark: [0, 300],
+      light: [400, 500],
+    },
+    volume: 0.3,
+  })
 
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), [])
@@ -13,7 +22,11 @@ const ThemeSwitch = () => {
       aria-label="Toggle Dark Mode"
       type="button"
       className="ml-1 mr-1 h-8 w-8 rounded p-1 sm:ml-4"
-      onClick={() => setTheme(theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark')}
+      onClick={() => {
+        setTheme(theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark')
+
+        theme === 'dark' ? play({ id: 'dark' }) : play({ id: 'light' })
+      }}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
