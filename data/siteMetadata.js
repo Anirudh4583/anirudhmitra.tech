@@ -1,8 +1,8 @@
 const siteMetadata = {
-  title: 'AnirudhMitra.Tech - Personal Portfolio & Blogs',
+  title: 'Anirudh Mitra - Developer & Learner',
   author: 'Anirudh Mitra',
-  headerTitle: 'AnirudhMitra.Tech - Personal Portfolio & Blogs',
-  description: 'Full-Stack Developer | Open-Source Contributor',
+  headerTitle: 'AnirudhMitra.tech - Portfolio & Blog',
+  description: 'Full-Stack Developer, Open-Source Contributor & Writer',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://www.anirudhmitra.tech/',
