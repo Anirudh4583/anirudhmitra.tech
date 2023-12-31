@@ -1,11 +1,11 @@
 const siteMetadata = {
-  title: 'AnirudhMitra.Tech - Personal Portfolio & Blogs',
+  title: 'Anirudh Mitra - Learner & Developer',
   author: 'Anirudh Mitra',
-  headerTitle: 'AnirudhMitra.Tech - Personal Portfolio & Blogs',
-  description: 'Full-Stack Developer | Open-Source Contributor',
+  headerTitle: 'Anirudh Mitra - Learner & Developer',
+  description: 'Full-Stack Developer, Open-Source Contributor & Writer',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://www.anirudhmitra.tech/',
+  siteUrl: 'https://www.4ni.in/',
   siteRepo: 'https://github.com/Anirudh4583/anirudhmitra.tech',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
