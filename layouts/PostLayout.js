@@ -39,7 +39,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                       {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
                     </time>{' '}
                     {/* TODO: fetch views from the db */}
-                    &#x2022; 1234 Views
+                    {/* &#x2022; 1234 Views */}
                   </dd>
                 </div>
               </dl>

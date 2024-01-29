@@ -1,0 +1,81 @@
+---
+title: Detecting if Component is "Updated" in Angular
+date: '2024-01-17'
+tags: ['Angular']
+draft: false
+summary: This article explored different methods to detect when a component is fully rendered in an Angular application. We discussed using Angular's lifecycle hooks, the testability API whenStable(), zone.js, router navigation, and the Mutation Observer API.
+images: []
+layout: PostLayout
+canonicalUrl: https://www.4ni.in/blog/detecting-if-component-is-updated-in-angular
+---
+
+<TOCInline toc={props.toc} asDisclosure />
+
+## Overview
+
+Rendering components in an Angular application is an essential task, and it’s important to be able to know when a component has finished rendering. Although the Angular framework provides a number of methods to detect when a component is rendered, a few extra steps are required to ensure that a component is fully rendered before it can be used.
+
+This document will discuss the methods available to detect when a component is fully rendered in an Angular application. It will cover the different ways of detecting when a component is rendered, and how to use these methods to ensure that a component is fully rendered before it is used. Finally, this document will discuss the best practices for using these detection methods in an Angular application and the final call which best suits the use-case.
+
+## First Things First
+
+The closest thing that angular provides for detecting whether a component is rendered are the following lifecycle hooks:
+
+- **AfterViewInit** [🔗](https://angular.io/api/core/AfterViewInit)
+  The first step in detecting when a component is fully rendered is to use the `ngAfterViewInit()` hook. This hook is called after a component's view, and its child views, have been created. It can be used to detect when a component's view has been initialized and is ready to be used.
+- **AfterViewChecked** [🔗](https://angular.io/api/core/AfterViewChecked)
+  In addition, the `ngAfterViewChecked()` hook can be used to detect when a component has been changed and re-rendered. This hook is called after every change detection cycle and can be used to detect when a component has finished rendering and is ready to be used.
+- **AfterContentInit** [🔗](https://angular.io/api/core/AfterContentInit)
+
+  Finally, the `ngAfterContentInit()` hook can be used to detect when a component's content has been initialized and is ready to use. This hook is called after a component's content, including any projected content, has been initialized and is ready to be used.
+
+## Caveats
+
+By using the `ngAfterViewInit()`, `ngAfterViewChecked()`, and `ngAfterContentInit()` hooks, we can only detect when a component is initialized. These hooks are triggered after a component's view, content, and child views are **created or have changed**, respectively.
+
+Its like knowing the start of a process, of which, you want to know the end.
+
+## Approach That Might Actually Work
+
+1. Using testability api `whenStable()`.
+2. Using zone.js to look for unresolved macrotasks.
+3. Router: NavigationEnd.
+4. **<span style={{ color: 'green' }}> Mutation Observer. </span>**
+
+## Mutation Observer: Expensive but Effective
+
+At last I decided to go with Mutation Observer.
+
+Mutation Observer is an API provided by browsers that can be used to watch for changes in the structure of the DOM. It can be effectively used to detect when a component has finished rendering, by watching for changes in the component's DOM and firing a callback when the DOM stops changing.
+
+However, it's important to note that Mutation Observer can be quite expensive in terms of performance. It's recommended to use it sparingly and disconnect the observer as soon as it's not needed to avoid any potential performance issues.
+
+Here's the demo code for how it can be used to detect DOM mutations:
+
+```js
+const config = { attributes: true, childList: true, subtree: true }
+
+// Callback function to execute when mutations are observed
+const callback = function (mutationsList, observer) {
+  for (let mutation of mutationsList) {
+    if (mutation.type === 'childList') {
+      console.log('A child node has been added or removed.')
+    } else if (mutation.type === 'attributes') {
+      console.log('The ' + mutation.attributeName + ' attribute was modified.')
+    }
+  }
+}
+
+// Create an observer instance linked to the callback function
+const observer = new MutationObserver(callback)
+
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config)
+
+// Later, you can stop observing
+observer.disconnect()
+```
+
+## Conclusion
+
+This article explored different methods to detect when a component is fully rendered in an Angular application. We discussed using Angular's lifecycle hooks, the testability API `whenStable()`, zone.js, router navigation, and the Mutation Observer API. While these methods have their caveats, a careful combination and understanding of them can help you with your specific use case. For me, it was the Mutation Observer API.
