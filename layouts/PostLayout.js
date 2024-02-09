@@ -7,12 +7,8 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-
-const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
-const discussUrl = (slug) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `${siteMetadata.siteUrl}/blog/${slug}`
-  )}`
+import ViewCounter from '@/components/ViewCounter'
+import { useEffect } from 'react'
 
 const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
 
@@ -38,8 +34,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     <time dateTime={date}>
                       {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
                     </time>{' '}
-                    {/* TODO: fetch views from the db */}
-                    &#x2022; 1234 Views
+                    <ViewCounter slug={slug} />
                   </dd>
                 </div>
               </dl>

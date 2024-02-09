@@ -57,8 +57,8 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
                   <dl>
                     <dt className="sr-only">Published on</dt>
                     <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                      <time dateTime={date}>{formatDate(date)}</time> &#x2022; 1234 Views
-                      {/* TODO: fetch views from the db */}
+                      <time dateTime={date}>{formatDate(date)}</time>
+                      {/* TODO: Add views */}
                     </dd>
                   </dl>
                   <div className="space-y-3 xl:col-span-3">
