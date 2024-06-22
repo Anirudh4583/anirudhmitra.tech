@@ -2,10 +2,11 @@ import { sql } from '@vercel/postgres'
 
 export default async function handler(request, response) {
   const { slug } = request.query
+  const _slug = slug[slug.length - 1]
   try {
-    increment(slug)
+    increment(_slug)
 
-    const result = await sql`SELECT count FROM views WHERE slug = ${slug}`
+    const result = await sql`SELECT count FROM views WHERE slug = ${_slug}`
     return response.status(200).json(result)
   } catch (error) {
     return response.status(500).json({ error })
