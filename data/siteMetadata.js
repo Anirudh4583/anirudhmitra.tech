@@ -5,7 +5,7 @@ const siteMetadata = {
   description: 'Full-Stack Developer | Open-Source Contributor | Aspiring Artist.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://www.4ni.in/',
+  siteUrl: 'https://www.4ni.in',
   siteRepo: 'https://github.com/Anirudh4583/anirudhmitra.tech',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
