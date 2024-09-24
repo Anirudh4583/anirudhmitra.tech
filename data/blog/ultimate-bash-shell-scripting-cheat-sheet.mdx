@@ -1,0 +1,281 @@
+---
+title: 'The Ultimate Bash Shell Scripting Cheat Sheet'
+date: '2024-07-01'
+tags: ['BASH', 'SHELL SCRIPTING', 'CHEAT SHEET']
+draft: false
+summary: Discover the essential elements of bash scripting with our comprehensive cheat sheet. This guide covers everything from basic syntax and variables to advanced topics like error handling and process management. Learn how to work with conditional statements, loops, functions, and arrays. Master string manipulation, file operations, and command-line arguments. Whether you're a beginner or an experienced developer, this ultimate bash shell scripting reference will boost your productivity and help you write more efficient scripts for Unix-like systems.
+images: [/static/images/blog/bash.png]
+layout: PostLayout
+canonicalUrl: https://www.4ni.in/blog/ultimate-bash-shell-scripting-cheat-sheet
+---
+
+<TOCInline toc={props.toc} asDisclosure />
+
+# The Ultimate Bash Shell Scripting Cheat Sheet
+
+![cover image](/static/images/blog/bash.png)
+
+Bash (Bourne Again Shell) is a powerful scripting language used in Unix-like operating systems. Whether you're a beginner or an experienced developer, this cheat sheet will serve as a quick reference for bash scripting. Let's dive in!
+
+## 1. Basic Syntax
+
+```bash
+#!/bin/bash
+# This is the shebang line, indicating this is a bash script
+
+# Comments start with #
+echo "Hello, World!"  # This is an inline comment
+```
+
+## 2. Variables
+
+```bash
+# Assigning variables (no spaces around =)
+name="John Doe"
+age=30
+
+# Using variables
+echo "My name is $name and I am $age years old."
+
+# Command substitution
+current_date=$(date +"%Y-%m-%d")
+echo "Today is $current_date"
+
+# Arithmetic operations
+result=$((5 + 3))
+echo "5 + 3 = $result"
+
+# Environmental variables
+echo "Home directory: $HOME"
+echo "Current user: $USER"
+```
+
+## 3. User Input
+
+```bash
+# Basic input
+read -p "Enter your name: " user_name
+
+# Input with a default value
+read -p "Enter your age [30]: " age
+age=${age:-30}
+
+# Silent input (for passwords)
+read -s -p "Enter password: " password
+```
+
+## 4. Conditional Statements
+
+```bash
+# If-else statement
+if [ "$age" -ge 18 ]; then
+    echo "You are an adult."
+elif [ "$age" -ge 13 ]; then
+    echo "You are a teenager."
+else
+    echo "You are a child."
+fi
+
+# Test operators
+# -eq (equal), -ne (not equal), -lt (less than), -le (less than or equal)
+# -gt (greater than), -ge (greater than or equal)
+
+# File test operators
+if [ -f "file.txt" ]; then
+    echo "File exists"
+fi
+if [ -d "/path/to/directory" ]; then
+    echo "Directory exists"
+fi
+# -r (readable), -w (writable), -x (executable), -s (not empty)
+```
+
+## 5. Loops
+
+```bash
+# For loop
+for i in {1..5}; do
+    echo "Iteration $i"
+done
+
+# While loop
+counter=0
+while [ $counter -lt 5 ]; do
+    echo "Counter: $counter"
+    ((counter++))
+done
+
+# Until loop
+until [ $counter -eq 10 ]; do
+    echo "Counter: $counter"
+    ((counter++))
+done
+
+# Loop over array elements
+fruits=("apple" "banana" "orange")
+for fruit in "${fruits[@]}"; do
+    echo "I like $fruit"
+done
+
+# Loop over command output
+for file in $(ls); do
+    echo "File: $file"
+done
+```
+
+## 6. Functions
+
+```bash
+# Defining a function
+greet() {
+    echo "Hello, $1!"
+}
+
+# Calling a function
+greet "Alice"
+
+# Function with return value
+is_even() {
+    if [ $(($1 % 2)) -eq 0 ]; then
+        return 0  # true
+    else
+        return 1  # false
+    fi
+}
+
+# Using function return value
+if is_even 4; then
+    echo "4 is even"
+fi
+```
+
+## 7. String Manipulation
+
+```bash
+string="Hello, World!"
+echo "Length: ${#string}"
+echo "Uppercase: ${string^^}"
+echo "Lowercase: ${string,,}"
+echo "Substring: ${string:7:5}"  # World
+echo "Replace: ${string/World/Universe}"
+```
+
+## 8. Arrays
+
+```bash
+# Declaring arrays
+declare -a fruits=("apple" "banana" "orange")
+numbers=(1 2 3 4 5)
+
+# Accessing elements
+echo "Second fruit: ${fruits[1]}"
+
+# Array length
+echo "Number of fruits: ${#fruits[@]}"
+
+# Looping through array
+for number in "${numbers[@]}"; do
+    echo "Number: $number"
+done
+
+# Adding elements
+fruits+=("grape")
+
+# Removing elements
+unset fruits[1]
+```
+
+## 9. Case Statement
+
+```bash
+case "$1" in
+    start)
+        echo "Starting the service..."
+        ;;
+    stop)
+        echo "Stopping the service..."
+        ;;
+    restart)
+        echo "Restarting the service..."
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
+```
+
+## 10. Error Handling and Debugging
+
+```bash
+# Exit on error
+set -e
+
+# Print commands before execution
+set -x
+
+# Error handling with trap
+trap 'echo "Error on line $LINENO"' ERR
+
+# Redirecting errors to a file
+command 2> error.log
+
+# Redirecting both stdout and stderr
+command &> output.log
+```
+
+## 11. Command-line Arguments
+
+```bash
+echo "Script name: $0"
+echo "First argument: $1"
+echo "Second argument: $2"
+echo "All arguments: $@"
+echo "Number of arguments: $#"
+```
+
+## 12. File Operations
+
+```bash
+# Reading a file line by line
+while IFS= read -r line; do
+    echo "Line: $line"
+done < input.txt
+
+# Writing to a file
+echo "New content" > output.txt
+echo "Appended content" >> output.txt
+
+# Checking file existence
+if [ -e "file.txt" ]; then
+    echo "File exists"
+fi
+
+# Comparing files
+if cmp -s "file1.txt" "file2.txt"; then
+    echo "Files are identical"
+fi
+```
+
+## 13. Process Management
+
+```bash
+# Running a command in the background
+long_running_command &
+
+# Getting the PID of the last background process
+bg_pid=$!
+
+# Waiting for a background process to finish
+wait $bg_pid
+
+# Killing a process
+kill $bg_pid
+
+# Running a command with a timeout
+timeout 5s some_command
+```
+
+## Conclusion
+
+This cheat sheet covers many aspects of bash shell scripting, from basic syntax to advanced topics like process management. Remember, practice is key to mastering bash scripting. Experiment with these commands and concepts to become proficient in writing powerful and efficient bash scripts.
