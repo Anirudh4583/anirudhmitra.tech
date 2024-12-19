@@ -1,0 +1,124 @@
+---
+title: Enable Touch ID for sudo Commands on macOS Terminal | Step-by-Step Guide
+date: '2024-12-17'
+tags: ['Developer', 'MacOS', 'Tips', 'Productivity']
+draft: false
+summary: Learn how to use Touch ID for sudo authentication in the macOS Terminal. Save time and streamline your workflow with this easy step-by-step guide for MacBook and Magic Keyboard users.
+images: []
+layout: PostLayout
+canonicalUrl: https://www.4ni.in/blog/enable-touch-id-for-sudo-commands-on-macos-terminal-stepbystep-guide
+---
+
+<TOCInline toc={props.toc} asDisclosure />
+
+## Streamline Your Workflow and Save Keystrokes
+
+### Introduction
+
+Typing your password every time you use `sudo` in the terminal can get repetitive and tedious, especially when your Mac has a perfectly good fingerprint sensor sitting right there. What if you could use Touch ID to authenticate `sudo` commands effortlessly in the macOS terminal? In this post, I'll guide you step-by-step to set up Touch ID for `sudo`.
+
+> **Disclaimer:** This setup works only on macOS devices with Touch ID sensors (like the MacBook Pro, Air, or Magic Keyboard with Touch ID).
+
+---
+
+### How Does It Work?
+
+macOS uses **PAM (Pluggable Authentication Modules)** to handle authentication. By tweaking its configuration, we can instruct macOS to use Touch ID as an authentication method for `sudo`. The setup is straightforward and does not require installing any third-party tools.
+
+---
+
+### Steps to Enable Touch ID for `sudo`
+
+Follow these steps carefully:
+
+#### 1. Open the Terminal
+
+Launch the Terminal app by pressing `Cmd + Space`, typing "Terminal," and pressing `Enter`.
+
+#### 2. Edit the `sudo` PAM Configuration
+
+To allow Touch ID authentication, modify the `sudo` authentication rules. The relevant file is located at `/etc/pam.d/sudo`. Use the following command to open it in a text editor:
+
+```bash
+sudo nano /etc/pam.d/sudo
+```
+
+You'll be prompted to enter your password (just this once).
+
+#### 3. Add the Touch ID PAM Module
+
+At the very top of the file, add the following line:
+
+```plaintext
+auth       sufficient     pam_tid.so
+```
+
+Here is what the line means:
+
+- **`auth`**: Specifies that this is an authentication rule.
+- **`sufficient`**: If this method (Touch ID) succeeds, no further authentication is needed.
+- **`pam_tid.so`**: The module enabling Touch ID authentication.
+
+Your updated file should look like this:
+
+```plaintext:/etc/pam.d/sudo
+# sudo: auth account password session
+auth       sufficient     pam_tid.so
+auth       required       pam_opendirectory.so
+account    required       pam_permit.so
+password   required       pam_deny.so
+session    required       pam_permit.so
+```
+
+<GitHubAlert type="caution">
+Make sure there are absolutely no typos in this file, else you'll be locked out of your system.
+
+It'll be a mess. Just re-verify everything before you close the editor. Thanks.
+
+</GitHubAlert>
+
+#### 4. Save and Exit
+
+- Press `Ctrl + O` to save your changes.
+- Press `Ctrl + X` to exit the editor.
+
+#### 5. Test Your Configuration
+
+Run a command with `sudo` to confirm everything is working as expected:
+
+```bash
+sudo ls
+```
+
+If configured correctly, your Mac will prompt you to use Touch ID instead of entering your password. Place your finger on the Touch ID sensor, and you're good to go!
+
+---
+
+### Troubleshooting
+
+If Touch ID doesn't work or you face any issues:
+
+- **Check for typos**: Ensure you added the `pam_tid.so` line correctly.
+- **Verify Touch ID is enabled**: Confirm Touch ID is set up and working for your user account.
+- **Revert to the default configuration**: If something breaks, edit the file again and remove the `pam_tid.so` line:
+
+  ```bash
+  sudo nano /etc/pam.d/sudo
+  ```
+
+---
+
+### Security Considerations
+
+While using Touch ID for `sudo` is convenient, it does come with a few trade-offs:
+
+- **Physical Access**: Anyone with physical access to your Mac and your fingerprint can execute privileged commands.
+- **Secure Your Mac**: Always lock your Mac when unattended to prevent unauthorized access.
+
+---
+
+### Conclusion
+
+Enabling Touch ID for `sudo` makes your terminal experience smoother and more efficient without sacrificing security. This simple tweak allows you to leverage the power of macOS's fingerprint sensor to authenticate commands quickly and conveniently.
+
+Now go ahead and bring a modern touch to your terminal workflow!
