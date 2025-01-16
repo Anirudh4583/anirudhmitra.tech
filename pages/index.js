@@ -84,7 +84,7 @@ export default function Home({ posts }) {
                           {summary}
                         </div>
                       </div>
-                      {/* 
+
                       <div className="text-base font-medium leading-6">
                         <Link
                           href={`/blog/${slug}`}
@@ -92,9 +92,8 @@ export default function Home({ posts }) {
                           aria-label={`Read "${title}"`}
                         >
                           Read more &rarr;
-                        </Link> 
+                        </Link>
                       </div>
-                        */}
                     </div>
                   </div>
                 </article>
