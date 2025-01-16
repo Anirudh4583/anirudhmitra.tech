@@ -10,7 +10,7 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
 
   const subscribe = async (e) => {
     e.preventDefault()
-
+    //TODO: integrate emailOctopus
     const res = await fetch(`/api/${siteMetadata.newsletter.provider}`, {
       body: JSON.stringify({
         email: inputEl.current.value,
@@ -37,6 +37,10 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
   return (
     <div>
       <div className="pb-1 text-lg font-semibold text-gray-800 dark:text-gray-100">{title}</div>
+      <div className="pb-4 text-sm text-gray-600 dark:text-gray-400">
+        Level up your dev skills - Get my latest blogs, pro tips,
+        <br /> and must-have tools delivered to your inbox!
+      </div>
       <form className="flex flex-col sm:flex-row" onSubmit={subscribe}>
         <div>
           <label className="sr-only" htmlFor="email-input">
@@ -76,7 +80,7 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
 export default NewsletterForm
 
 export const BlogNewsletterForm = ({ title }) => (
-  <div className="flex items-center justify-center">
+  <div className="my-6 flex items-center justify-center">
     <div className="bg-gray-100 p-6 sm:px-14 sm:py-8 dark:bg-gray-800">
       <NewsletterForm title={title} />
     </div>
