@@ -5,7 +5,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import formatDate from '@/lib/utils/formatDate'
 
-// import NewsletterForm, { BlogNewsletterForm } from '@/components/NewsletterForm'
+import NewsletterForm from '@/components/NewsletterForm'
 
 const MAX_DISPLAY = 5
 
@@ -84,7 +84,7 @@ export default function Home({ posts }) {
                           {summary}
                         </div>
                       </div>
-                      {/* 
+
                       <div className="text-base font-medium leading-6">
                         <Link
                           href={`/blog/${slug}`}
@@ -92,9 +92,8 @@ export default function Home({ posts }) {
                           aria-label={`Read "${title}"`}
                         >
                           Read more &rarr;
-                        </Link> 
+                        </Link>
                       </div>
-                        */}
                     </div>
                   </div>
                 </article>
@@ -114,11 +113,9 @@ export default function Home({ posts }) {
           </Link>
         </div>
       )}
-      {/* {siteMetadata.newsletter.provider !== '' && (
-        <div className="flex items-center justify-center pt-4">
-          <NewsletterForm />
-        </div>
-      )} */}
+      <div className="flex items-center justify-center pt-4">
+        <NewsletterForm />
+      </div>
     </>
   )
 }
